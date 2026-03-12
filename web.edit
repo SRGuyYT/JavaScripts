@@ -1,0 +1,19 @@
+javascript:(function(){
+    var gui = document.createElement('div');
+    gui.style = "position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#222;color:#fff;padding:20px;z-index:9999;border-radius:10px;text-align:center;font-family:sans-serif;box-shadow:0 0 20px rgba(0,0,0,0.5);";
+    gui.innerHTML = '<h3>Page Editor</h3><p>Design Mode is currently <b>OFF</b></p><button id="toggleBtn" style="padding:10px 20px;cursor:pointer;background:#444;color:#fff;border:1px solid #666;">Turn ON</button><br><button onclick="this.parentElement.remove()" style="margin-top:10px;background:none;border:none;color:#aaa;cursor:pointer;text-decoration:underline;">Dismiss</button>';
+    document.body.appendChild(gui);
+    
+    var btn = document.getElementById('toggleBtn');
+    btn.onclick = function(){
+        if(document.designMode === 'on'){
+            document.designMode = 'off';
+            btn.innerText = 'Turn ON';
+            gui.querySelector('p').innerHTML = 'Design Mode is <b>OFF</b>';
+        } else {
+            document.designMode = 'on';
+            btn.innerText = 'Turn OFF';
+            gui.querySelector('p').innerHTML = 'Design Mode is <b style="color:#0f0">ON</b>';
+        }
+    };
+})();
