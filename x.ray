@@ -1,1 +1,18 @@
-
+javascript:(function(){
+    var style = document.getElementById('xray-style');
+    if(style){
+        style.remove();
+        document.getElementById('xray-gui').remove();
+    } else {
+        var s = document.createElement('style');
+        s.id = 'xray-style';
+        s.innerHTML = '* { outline: 1px solid #00ff00 !important; background: rgba(0, 255, 0, 0.05) !important; }';
+        document.head.appendChild(s);
+        
+        var gui = document.createElement('div');
+        gui.id = 'xray-gui';
+        gui.style = "position:fixed;bottom:20px;left:20px;background:#000;color:#0f0;padding:15px;z-index:9999;border:1px solid #0f0;font-family:monospace;";
+        gui.innerHTML = '<strong>X-RAY MODE: ACTIVE</strong><br><button onclick="location.reload()" style="background:#0f0;border:none;margin-top:10px;padding:5px 10px;cursor:pointer">Disable</button>';
+        document.body.appendChild(gui);
+    }
+})();
