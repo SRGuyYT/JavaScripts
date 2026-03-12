@@ -1,0 +1,13 @@
+javascript:(function(){
+    var imgs = document.getElementsByTagName('img');
+    var overlay = document.createElement('div');
+    overlay.style = "position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);z-index:9999;overflow-y:auto;padding:20px;display:flex;flex-wrap:wrap;gap:10px;justify-content:center;";
+    overlay.innerHTML = '<div style="width:100%;text-align:right;"><button onclick="this.parentElement.parentElement.remove()" style="padding:10px;background:#f00;color:#fff;border:none;cursor:pointer;">CLOSE GALLERY</button></div>';
+    for(var i=0; i<imgs.length; i++){
+        var img = document.createElement('img');
+        img.src = imgs[i].src;
+        img.style = "max-height:150px;border:2px solid #fff;border-radius:5px;";
+        overlay.appendChild(img);
+    }
+    document.body.appendChild(overlay);
+})();
